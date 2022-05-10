@@ -2,19 +2,27 @@ import prismaCLient from '../../database/prismaCLient';
 import { Request, Response } from 'express';
 import { IOriginDestin } from './types';
 
-class PlaneController {
-
+class createOriginDestinController {
 	async createOriginDestin(req: Request, res: Response) {
-		const {origin, destination, price} = req.body as unknown as IOriginDestin;
-		const planes = await prismaCLient.originDestin.create({
-			data: {
-				destination,
+		try {
+			const { origin, destination, price } = req.body;
+			const originDestin: IOriginDestin = {
 				origin,
+				destination,
 				price
+			};
+			const createOriginDestin = await prismaCLient.originDestin.create({
+				data: originDestin
+			});
+			if (!createOriginDestin) {
+				res.status(404).json({ error: 'Origin and/or destination not found' });
+			
 			}
-		});
-		res.json(planes);    
+			return res.json(origin);
+		} catch (error) {
+			return res.status(500).json({ error: 'Internal server error' });
+		}
 	}
 }
 
-export default new PlaneController();
+export default new createOriginDestinController();

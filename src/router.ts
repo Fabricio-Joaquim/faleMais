@@ -17,6 +17,7 @@ router.get('/getAllPlan',PlansController.getAllPlanController.getAllPlan);
 router.get('/getOrigin', OriginDestin.getOriginDestinController.getOriginDestin);
 router.get('/getAllOrigin', OriginDestin.getAllOriginController.getAllOrigin);
 router.get('/getDestinByOrigin',OriginDestin.getDestinByOriginController.getDestinByOrigin);
-router.post('createOrigin',OriginDestin.createOriginDestinController.createOriginDestin);
+
+router.post('/createOrigin',OriginDestin.createOriginDestinController.createOriginDestin);
 
 export default router;
