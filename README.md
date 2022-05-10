@@ -1,3 +1,5 @@
+Node Version: v16.13.2
+
 run "yarn" to install dependences
 
 create the .env archive to insert a config environment variables DATABASE_URL = "postgresql://USER:PASSWORD@HOST:PORT/db?schema=public"
