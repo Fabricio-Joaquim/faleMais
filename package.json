@@ -12,8 +12,8 @@
   "scripts": {
     "dev": "ts-node-dev  --inspect --respawn --transpile-only --ignore-watch node_modules src/server",
     "seed": "ts-node --transpile-only prisma/seed.ts",
-    "start": "node dist/server.js" ,
-    "build": "npx prisma generate"   
+    "build": "npx prisma migrate deploy && npm run seed",
+    "start": "node src/server.js"
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",
